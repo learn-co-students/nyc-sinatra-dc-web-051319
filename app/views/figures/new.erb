@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create a new Figure</title>
+</head>
+<body>
+
+        <form action="/figures" method="POST">
+            <label for="figure[name]">FIGURE NAME:</label>
+            <input type="text" name="figure[name]" id="figure_name">
+            <br>
+            <h2>TITLES:</h2>
+            <% Title.all.each do |title| %>
+                <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="title_<%=title.id%>"><%= title.name %></input>
+                <br>
+            <% end %>
+            <h2>CREATE A NEW TITLE:</h2>
+                <label for="title[name]">NAME</label>
+                <input type="text" name="title[name]" id="new_title">
+            <br>
+            <h2>LANDMARKS:</h2>
+            <% Landmark.all.each do |landmark| %>
+                <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="landmark_<%=landmark.id%>" ><%= landmark.name %></input>
+                <br>
+            <% end %>
+            <br>
+            <h2>CREATE A NEW TITLE:</h2>
+                <label for="landmark[name]">Landmark Name</label>
+                <input type="text" name="landmark[name]" id="new_landmark">
+                <br>
+                <label for="landmark[year_completed]">Landmark Year Completed</label>
+                <input type="text" name="landmark[year_completed]">
+            <br>
+            <br>
+            <input type="submit" name="submit" value="CREATE" id="Create New Figure">
+        </form>
+        <br>
+        <br>
+        <a class="button" href="/landmarks">Landmarks</a>
+        <br>
+        <a class="button" href="/">Home</a>
+        
+    
+</body>
+</html>
