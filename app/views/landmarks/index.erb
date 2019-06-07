@@ -1,6 +1,24 @@
-<h2>All Historical Landmarks</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Historical Landmarks</title>
+</head>
+<body>
+    <h2>All Historical Landmarks</h2>
 
-<!-- add content here -->
+        <a class="button" href="/figures">Figures</a>
+        <br>
+        <a class="button" href="/">Home</a>
+        <br>
+        <a class="button" href="/landmarks/new">Create a new Landmark</a>
+        <br>
+        <br>
+        <% Landmark.all.each do |landmark| %>
+            <h3><a href="/landmarks/<%= landmark.id %>"><%= landmark.name %></a> - <%= landmark.year_completed %></h3>
+        <% end %>
+</body>
+</html>
 
-<a class="button" href="/figures">Figures</a>
-<a class="button" href="/">Home</a>

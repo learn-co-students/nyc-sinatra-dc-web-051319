@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EDITING <%= @figure.name %></title>
+</head>
+<body>
+
+        <form action="/figures/<%= @figure.id %>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <label for="figure[name]">FIGURE NAME:</label>
+            <input type="text" name="figure[name]" id="figure_name" value="<%= @figure.name %>">
+            <br>
+            <h2>TITLES:</h2>
+            <% Title.all.each do |title| %>
+                <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>" id="title_<%=title.id%>" <%='checked' if @figure.titles.include?(title) %> ><%= title.name %></input>
+                <br>
+            <% end %>
+            <h2>CREATE A NEW TITLE:</h2>
+                <label for="title[name]">NAME</label>
+                <input type="text" name="title[name]" id="new_title">
+            <br>
+            <h2>LANDMARKS:</h2>
+            <% Landmark.all.each do |landmark| %>
+                <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>" id="landmark_<%=landmark.id%>" <%='checked' if @figure.landmarks.include?(landmark) %> ><%= landmark.name %></input>
+                <br>
+            <% end %>
+            <br>
+            <h2>CREATE A NEW TITLE:</h2>
+                <label for="landmark[name]">Landmark Name</label>
+                <input type="text" name="landmark[name]" id="new_landmark">
+                <br>
+                <label for="landmark[year_completed]">Landmark Year Completed</label>
+                <input type="text" name="landmark[year_completed]">
+            <br>
+            <br>
+            <input type="submit" name="submit" value="EDIT / UPDATE" id="Edit Figure">
+        </form>
+        <br>
+        <br>
+        <a class="button" href="/landmarks">Landmarks</a>
+        <br>
+        <a class="button" href="/">Home</a>
+        
+    
+</body>
+</html>

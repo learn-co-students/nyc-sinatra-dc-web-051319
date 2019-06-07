@@ -1,8 +1,7 @@
 class ApplicationController < Sinatra::Base
-  set :views, proc { File.join(root, '../views/') }
-  register Sinatra::Twitter::Bootstrap::Assets
 
+  set :views, "./app/views/application"
   get '/' do
-    erb :"application/index"
+    erb :index
   end
 end
